@@ -37,7 +37,7 @@ class InternetSpeedTwitterBot:
 
     def tweet_at_provider(self):
         driver.get(url="https://twitter.com/i/flow/login?input_flow_data=%7B%22requested_variant%22%3A%22eyJsYW5nIjoicm8ifQ%3D%3D%22%7D")
-        time.sleep(8)
+        time.sleep(12)
         email = driver.find_element(By.XPATH, '//*[@id="layers"]/div/div/div/div/div/div/div[2]/div[2]/div/div/div[2]/div[2]/div/div/div/div[5]/label/div/div[2]/div/input')
         email.click()
         email.send_keys(TWITTER_EMAIL)
@@ -45,11 +45,12 @@ class InternetSpeedTwitterBot:
         next.click()
         time.sleep(5)
         password = driver.find_element(By.XPATH, '//*[@id="layers"]/div/div/div/div/div/div/div[2]/div[2]/div/div/div[2]/div[2]/div[1]/div/div[2]/label/div/div[2]/div/input')
-        password.send_keys(TWITTER_USERNAME)
+        password.send_keys("AdoryanC")
+        time.sleep(2)
         password.send_keys(Keys.ENTER)
         time.sleep(2)
         password1 = driver.find_element(By.XPATH, '//*[@id="layers"]/div/div/div/div/div/div/div[2]/div[2]/div/div/div[2]/div[2]/div[1]/div/div/div[3]/div/label/div/div[2]/div[1]/input')
-        password1.send_keys("x3etyHZaG")
+        password1.send_keys(os.environ.get("PASSWORD"))
         password1.send_keys(Keys.ENTER)
         time.sleep(30)
         tweet = driver.find_element(By.XPATH, '//*[@id="react-root"]/div/div/div[2]/header/div/div/div/div[1]/div[3]/a/div')
@@ -62,5 +63,5 @@ class InternetSpeedTwitterBot:
 
 
 bot = InternetSpeedTwitterBot()
-bot.get_internet_speed()
+# bot.get_internet_speed()
 bot.tweet_at_provider()
