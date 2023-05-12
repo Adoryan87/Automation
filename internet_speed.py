@@ -13,7 +13,7 @@ driver = webdriver.Chrome(options=options, service=Service(executable_path="chro
 load_dotenv()
 
 TWITTER_EMAIL = os.environ.get("EMAIL")
-TWITTER_USERNAME = os.environ.get("USERNAME")
+TWITTER_USERNAME = os.environ.get("USER")
 
 
 class InternetSpeedTwitterBot:
@@ -45,7 +45,7 @@ class InternetSpeedTwitterBot:
         next.click()
         time.sleep(5)
         password = driver.find_element(By.XPATH, '//*[@id="layers"]/div/div/div/div/div/div/div[2]/div[2]/div/div/div[2]/div[2]/div[1]/div/div[2]/label/div/div[2]/div/input')
-        password.send_keys("AdoryanC")
+        password.send_keys(os.environ.get("USER"))
         time.sleep(2)
         password.send_keys(Keys.ENTER)
         time.sleep(2)
@@ -63,5 +63,5 @@ class InternetSpeedTwitterBot:
 
 
 bot = InternetSpeedTwitterBot()
-bot.get_internet_speed()
+# bot.get_internet_speed()
 bot.tweet_at_provider()
